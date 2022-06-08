@@ -1,0 +1,47 @@
+import random
+import math
+
+p=int(1000001912)
+
+#g = random.randint(2, q)
+g=2
+
+x = random.randint(2, 1000)  #private key
+
+ 
+
+#x=3
+#print("x:",x)
+
+#Encrtption key
+y=pow(g,x,p)
+
+#print("y:", y)
+
+print("Public keys{p, g, y}=","{",p,",",g,",",y,"}")
+print("Private key{x}=","{",x,"}")
+
+#message
+msg=int(input("Enter a message: "))
+
+r = random.randint(2, 1000)  
+
+ 
+#r=5
+#print("r:", r)
+#encrption
+
+c1=pow(g,r,p)
+c2=(msg*pow(y,r))%p
+
+
+print("{CryptedText1, CryptedText2}=","{",c1,",",c2,"}")
+
+#decryption
+
+n=pow(c1,x)
+n2=pow(n,-1,p)
+c=c2*n2
+decryptedText = pow(c,1,p)
+
+print("decryptedText: ",decryptedText)
